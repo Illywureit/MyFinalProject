@@ -50,9 +50,12 @@ from flask   import Flask, render_template, flash, request
 from wtforms import Form, BooleanField, StringField, PasswordField, validators
 from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateField
 from wtforms import ValidationError
+
+from MyFinalProject.Models.QueryFormStructure import LoginFormStructure
+from MyFinalProject.Models.QueryFormStructure import UserRegistrationFormStructure
     
 
-app.config['SECRET_KEY'] = 'IM ILI AND IM BITCH'
+app.config['SECRET_KEY'] = 'h'
 
 @app.route('/')
 @app.route('/home')
@@ -102,9 +105,9 @@ def olimpic_medals():
     """Renders the about page."""
     form1 = ExpandForm()
     form2 = CollapseForm()
-    s = path.join(path.dirname(__file__), 'static\\data\\olimbic-medal.csv')
+    s = path.join(path.dirname(__file__), 'static\\data\\olimpic-medal.csv')
     print(s)
-    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\olimbic-medal.csv'), encoding = "utf-8")
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\olimpic-medal.csv'), encoding = "utf-8")
     raw_data_table = ''
     #df = pd.read_csv("data/olimpic medal.csv", encoding = "ISO-8859-1")
 
@@ -126,3 +129,83 @@ def olimpic_medals():
         form1 = form1,
         form2 = form2
     )
+
+@app.route('/top_runners' , methods = ['GET' , 'POST'])
+def top_runners():
+
+    print("runners")
+
+    """Renders the about page."""
+    form1 = ExpandForm()
+    form2 = CollapseForm()
+    s = path.join(path.dirname(__file__), 'static\\data\top-runners.csv')
+    print(s)
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\top-runners.csv'), encoding = "utf-8")
+    raw_data_table = ''
+    #df = pd.read_csv("data/olimpic medal.csv", encoding = "ISO-8859-1")
+
+    if request.method == 'POST':
+        if request.form['action'] == 'Expand' and form1.validate_on_submit():
+            raw_data_table = df.to_html(classes = 'table table-hover')
+        if request.form['action'] == 'Collapse' and form2.validate_on_submit():
+            raw_data_table = ''
+
+    
+
+    return render_template(
+        'runners.html',
+        title='Top runners',
+        year=datetime.now().year,   
+        message='top runners dataset page.',
+     
+        raw_data_table = raw_data_table,
+        form1 = form1,
+        form2 = form2
+    )
+
+@app.route('/register', methods=['GET', 'POST'])
+def Register():
+    form = UserRegistrationFormStructure(request.form)
+
+    if (request.method == 'POST' and form.validate()):
+        if (not db_Functions.IsUserExist(form.username.data)):
+            db_Functions.AddNewUser(form)
+            db_table = ""
+
+            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
+            # Here you should put what to do (or were to go) if registration was good
+        else:
+            flash('Error: User with this Username already exist ! - '+ form.username.data)
+            form = UserRegistrationFormStructure(request.form)
+
+    return render_template(
+        'register.html', 
+        form=form, 
+        title='Register New User',
+        year=datetime.now().year,
+        repository_name='Pandas',
+        )
+
+# -------------------------------------------------------
+# Login page
+# This page is the filter before the data analysis
+# -------------------------------------------------------
+
+@app.route('/login', methods=['GET', 'POST'])
+def Login():
+    form = LoginFormStructure(request.form)
+
+    if (request.method == 'POST' and form.validate()):
+        if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
+            flash('Login approved!')
+            #return redirect('<were to go if login is good!')
+        else:
+            flash('Error in - Username and/or password')
+   
+    return render_template(
+        'login.html', 
+        form=form, 
+        title='Login to data analysis',
+        year=datetime.now().year,
+        repository_name='Pandas',
+        )

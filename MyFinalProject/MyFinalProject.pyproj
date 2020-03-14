@@ -31,6 +31,12 @@
     <Compile Include="MyFinalProject\Models\Forms.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MyFinalProject\Models\LocalDatabaseRoutines.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MyFinalProject\Models\QueryFormStructure.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
     <Compile Include="MyFinalProject\__init__.py" />
     <Compile Include="MyFinalProject\views.py" />
@@ -48,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyFinalProject\static\data\olimpic-medal.csv" />
+    <Content Include="MyFinalProject\static\data\top-runners.csv" />
+    <Content Include="MyFinalProject\static\data\users.csv" />
     <Content Include="MyFinalProject\static\imgs\1200px-Olympic_rings_without_rims.svg.png" />
     <Content Include="MyFinalProject\static\imgs\300px-Beijingolympicsmedals.jpg" />
     <Content Include="MyFinalProject\static\imgs\images %281%29.jpg" />
@@ -56,8 +64,14 @@
     <Content Include="MyFinalProject\static\imgs\olimpic2.jpg" />
     <Content Include="MyFinalProject\static\imgs\olimpic3.jpg" />
     <Content Include="MyFinalProject\static\imgs\Photo_36772_20160812191906.jpg" />
+    <Content Include="MyFinalProject\static\imgs\running1.jpg" />
+    <Content Include="MyFinalProject\static\imgs\running2.jpg" />
+    <Content Include="MyFinalProject\static\imgs\running3.jpg" />
     <Content Include="MyFinalProject\templates\data.html" />
     <Content Include="MyFinalProject\templates\medal.html" />
+    <Content Include="MyFinalProject\templates\runners.html" />
+    <Content Include="MyFinalProject\templates\login.html" />
+    <Content Include="MyFinalProject\templates\register.html" />
     <Content Include="requirements.txt" />
     <Content Include="MyFinalProject\static\content\bootstrap.css" />
     <Content Include="MyFinalProject\static\content\bootstrap.min.css" />
