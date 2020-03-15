@@ -28,13 +28,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="MyFinalProject\Models\Forms.py">
+    <Compile Include="MyFinalProject\models\Forms.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MyFinalProject\Models\LocalDatabaseRoutines.py">
+    <Compile Include="MyFinalProject\models\LocalDatabaseRoutines.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MyFinalProject\Models\QueryFormStructure.py">
+    <Compile Include="MyFinalProject\models\QueryFormStructure.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="runserver.py" />
@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MyFinalProject\" />
-    <Folder Include="MyFinalProject\Models\" />
+    <Folder Include="MyFinalProject\models\" />
     <Folder Include="MyFinalProject\static\" />
     <Folder Include="MyFinalProject\static\content\" />
     <Folder Include="MyFinalProject\static\fonts\" />

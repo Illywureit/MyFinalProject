@@ -51,10 +51,11 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators
 from wtforms import TextField, TextAreaField, SubmitField, SelectField, DateField
 from wtforms import ValidationError
 
-from MyFinalProject.Models.QueryFormStructure import LoginFormStructure
-from MyFinalProject.Models.QueryFormStructure import UserRegistrationFormStructure
-    
-
+from MyFinalProject.models.QueryFormStructure import LoginFormStructure
+from MyFinalProject.models.QueryFormStructure import UserRegistrationFormStructure
+from MyFinalProject.models.LocalDatabaseRoutines import create_LocalDatabaseServiceRoutines
+  
+db_Functions = create_LocalDatabaseServiceRoutines() 
 app.config['SECRET_KEY'] = 'h'
 
 @app.route('/')
