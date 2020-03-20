@@ -1,32 +1,34 @@
 ﻿{% extends "layout.html" %}
 
 {% block content %}
-
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
-<h2 class="heb">בדף הזה אני אתאר מאגרי הנתונים שלי </h2>
-<p>Use this area to provide additional information.</p>
-<div class="row">
-    <div class="col-md-3"><img class="contain" src=/static/imgs/images.jpg alt="olimpic sailing" width="265" height="190 " /></div>
-    <div class="col-md-3"><img class="contain" src=/static/imgs/300px-Beijingolympicsmedals.jpg alt="olimpic sailing" width="212" height="190" /></div>
-    <div class="col-md-3"><img class="contain" src=/static/imgs/1200px-Olympic_rings_without_rims.svg.png alt="olimpic sailing" width="300" height="138" /></div>
-</div>
-<br />
-<br />
-<br />
-<div>
-    <div class="col-md-5"><a href="{{ url_for('olimpic_medals') }}">medals Dataset</a></div>
-    <div class="col-md-5 heb">בדף הנתונים הזה, מתוארים כל הזוכים במדליות  אולימפיות בין השנים 1896 - 2012</div>
-
-
-</div>
-<br />
-<br />
-<br />
-<div>
-    <div class="col-md-5"><a href="{{ url_for('top_runners') }}">runners Dataset</a></div>
-    <div class="col-md-5 heb">בדף הנתונים הזה, מתוארים האצנים הטובים ביותר בכל הזמנים</div>
+    <body style="background-color:lightblue ;">
+        h2>{{ title }}.</h2>
+        <h3>{{ message }}</h3>
+        <h2 class="heb">בדף הזה אני אתאר מאגרי הנתונים שלי </h2>
+        <p>Use this area to provide additional information.</p>
+        <div class="row">
+            <div class="col-md-3"><img class="contain" src=/static/imgs/images.jpg alt="olimpic sailing" width="265" height="190 " /></div>
+            <div class="col-md-3"><img class="contain" src=/static/imgs/300px-Beijingolympicsmedals.jpg alt="olimpic sailing" width="212" height="190" /></div>
+            <div class="col-md-3"><img class="contain" src=/static/imgs/1200px-Olympic_rings_without_rims.svg.png alt="olimpic sailing" width="300" height="138" /></div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div>
+            <div class="col-md-5"><a href="{{ url_for('olimpic_medals') }}">medals Dataset</a></div>
+            <div class="col-md-5 heb">בדף הנתונים הזה, מתוארים כל הזוכים במדליות  אולימפיות בין השנים 1896 - 2012</div>
 
 
-</div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div>
+            <div class="col-md-5"><a href="{{ url_for('top_runners') }}">runners Dataset</a></div>
+            <div class="col-md-5 heb">בדף הנתונים הזה, מתוארים האצנים הטובים ביותר בכל הזמנים</div>
+
+
+        </div>
+    </body>
+<
 {% endblock %}

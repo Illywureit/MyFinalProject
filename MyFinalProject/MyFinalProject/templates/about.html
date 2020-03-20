@@ -2,9 +2,56 @@
 
 {% block content %}
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+    <body style="background-color:lightblue;">
+        <h2>{{ title }}.</h2>
+        <h3>{{ message }}</h3>
 
-<p>Use this area to provide additional information.</p>
+        <p>Use this area to provide additional information.</p>
 
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2>about the project</h2>
+                <p>
+                    The project is part of the "data science" profession of the 10th grade students of the Alterman High School in Tel Aviv.
+                    <br /><br />
+                    The project combines two main areas of knowledge:
+                    <br /><br />
+                    * Programming in the Web Environment
+                    <br />
+                    * Data Science
+                    <br /><br />
+                    As part of the project, I located databases on the network and intend to build around them a website that allows access to the databases, data analysis and presentation to users in a convenient way. The site will allow the user to explore the data in the chosen field and try to reach valuable insights and conclusions.            <br /><br />
+                    The project will be based on the following technological components:
+                    <br /><br />
+                    * Python language.
+                    <br />
+                    * Pandas library.
+                    <br />
+                    * Flask infrastructure for building a web server.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h2></h2>
+            <p>
+
+            </p>
+        </div>
+
+        <div class="row"  style="background-color:lightblue;">
+            <table class="table table-striped"  style="background-color:lightblue;">
+                <tbody  style="background-color:lightblue;">
+                    <tr  style="background-color:lightblue;">
+                        <td  style="background-color:lightblue;" >Specification document suitable for mission 5130</td>
+                        <td style="background-color:lightblue;"><a class="btn btn-primary" href="https://docs.google.com/document/d/1bSnX65YTq95anMGpIHNpeQG6-uEkQi0WveYs8NroIOI/edit" target="_blank">Go &raquo;</a></td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <hr />
+    </body>
 {% endblock %}

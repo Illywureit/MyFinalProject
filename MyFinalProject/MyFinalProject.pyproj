@@ -67,6 +67,8 @@
     <Content Include="MyFinalProject\static\imgs\running1.jpg" />
     <Content Include="MyFinalProject\static\imgs\running2.jpg" />
     <Content Include="MyFinalProject\static\imgs\running3.jpg" />
+    <Content Include="MyFinalProject\static\imgs\smil.jpg" />
+    <Content Include="MyFinalProject\static\imgs\sport.jpg" />
     <Content Include="MyFinalProject\templates\data.html" />
     <Content Include="MyFinalProject\templates\medal.html" />
     <Content Include="MyFinalProject\templates\runners.html" />

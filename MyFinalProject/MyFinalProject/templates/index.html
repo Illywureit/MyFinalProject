@@ -1,22 +1,26 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <body style="background-color:gray;">
+        <div class="jumbotron" style="background-color:lightblue">
+            <h1>My Final Project </h1>
+            <h3>The best athletes in the world in the past and today</h3>
+         
+        </div>
 
-<div class="jumbotron">
-    <h1>My Final Project </h1>
-    <p class="lead heb">הספורטאים הטובים ביותר בעולם בעבר והיום</p>
-</div>
+        <div class="row">
+            <div class="col-md-5">
+                <img class="contain" src=/static/imgs/sport.jpg alt="olimpic sailing" width="400" height="255" />
+            </div>
+            <div class="col-md-5">
+                <h2 >What is the subject of the work?</h2>
+                <p>My project is about sport. Sport includes all forms of competitive physical activity or games which, through casual or organised participation, at least in part aim to use, maintain or improve physical ability and skills while providing enjoyment to participants, and in some cases, entertainment for spectators. Hundreds of sports exist, from those between single contestants, through to those with hundreds of simultaneous participants, either in teams or competing as individuals.</p>
+                <p>In my project I will introduce the best athletes </p>
+            </div>
 
-<div class="row">
-    <div class="col-md-5">
-        <img class="contain" src=/static/imgs/sport.jpg />
-    </div>
-    <div class="col-md-5">
-        <h2 class="heb">מהו נושא העבודה?</h2>
-        <p class="heb">העבודה שלי עוסקת בספורט. ספורט הוא ענף בידור ופנאי הכולל פעילות גופנית שבה מאמנים או משפרים מיומנויות או כישורים גופניים, ושמטרתה השתתפות בתחרות בבידור עצמי או בהנאה ודרכים אחרות</p>
-        <p class="heb">בעבודה שלי אני אציג את הספורטאים הטובים ביותר </p>
-    </div>
+        </div>
+    </body>
 
-</div>
+
 
 {% endblock %}
