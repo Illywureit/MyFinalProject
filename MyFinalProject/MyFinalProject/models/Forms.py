@@ -2,13 +2,14 @@ from datetime import datetime
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms import Form, BooleanField, PasswordField
-from wtforms import TextField, TextAreaField, SelectField, DateField
+from wtforms import Form, BooleanField, PasswordField , HiddenField , DateTimeField , IntegerField , DecimalField , FloatField , RadioField
+from wtforms import Form, SelectMultipleField , BooleanField
+from wtforms import TextField, TextAreaField, SelectField
 from wtforms import validators, ValidationError
+from wtforms.fields.html5 import DateField
 
 from wtforms.validators import DataRequired
 from wtforms.validators import InputRequired
-
 
 
 
@@ -21,4 +22,8 @@ class CollapseForm(FlaskForm):
 	submit2 = SubmitField('Collapse')
 	name="Collapse"
 	value="Collapse"
+
+class OlympicMedals(FlaskForm):
+    country = SelectField('Select a Country:' , validators = [DataRequired] )
+    subnmit = SubmitField('submit')
 

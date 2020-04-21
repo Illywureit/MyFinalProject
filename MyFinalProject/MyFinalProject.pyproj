@@ -74,6 +74,7 @@
     <Content Include="MyFinalProject\templates\runners.html" />
     <Content Include="MyFinalProject\templates\login.html" />
     <Content Include="MyFinalProject\templates\register.html" />
+    <Content Include="MyFinalProject\templates\olympic.html" />
     <Content Include="requirements.txt" />
     <Content Include="MyFinalProject\static\content\bootstrap.css" />
     <Content Include="MyFinalProject\static\content\bootstrap.min.css" />

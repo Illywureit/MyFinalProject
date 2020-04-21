@@ -12,7 +12,9 @@ from collections import Counter
 import pandas as pd
 from flask_bootstrap import Bootstrap
 bootstrap = Bootstrap(app)
-
+import base64
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 
 from MyFinalProject.models.Forms import ExpandForm
 from MyFinalProject.models.Forms import CollapseForm
@@ -29,7 +31,7 @@ from flask import render_template, redirect, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
-    
+from MyFinalProject.models.Forms import OlympicMedals  
 import numpy as np
 import matplotlib.pyplot as plt
     
@@ -210,3 +212,41 @@ def Login():
         year=datetime.now().year,
         repository_name='Pandas',
         )
+@app.route('/olympic-medals' , methods = ['GET' , 'POST'])
+def olympic_medals():
+
+    print("Olympic Medals")
+
+    form1 = OlympicMedals()
+    chart = '/static/imgs/1200px-Olympic_rings_without_rims.svg.png'
+
+   
+    df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/olimpic-medal.csv'))
+    country_choices = list(set(df['Country']))
+    clean_country_choices = [x for x in country_choices if x == x]
+    m = list(zip(clean_country_choices , clean_country_choices))
+    form1.country.choices = m 
+
+
+    if request.method == 'POST':
+        country = form1.country.data
+        df1 = df.loc[df['Country'] == country]
+        s = df1.groupby('Discipline').size().sort_values(ascending=False)
+        fig = plt.figure()
+        ax = fig.add_subplot(111)
+        fig.subplots_adjust(bottom=0.4)
+        s.plot(ax = ax , kind = 'bar', figsize = (24, 8) , fontsize = 22 , grid = True)
+        chart = plot_to_img(fig)
+
+    
+    return render_template(
+        'olympic.html',
+        form1 = form1,
+        chart = chart
+    )
+def plot_to_img(fig):
+    pngImage = io.BytesIO()
+    FigureCanvas(fig).print_png(pngImage)
+    pngImageB64String = "data:image/png;base64,"
+    pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+    return pngImageB64String
