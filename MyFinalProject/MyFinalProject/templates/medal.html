@@ -3,90 +3,90 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
+    <body style="background-color:lightblue;">
+        <h2>{{ title }}.</h2>
+        <h3>{{ message }}</h3>
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+        <div class="row">
+            <p> </p>
+        </div>
+        <div class="row">
+            <div class="col-md-3"><img class="contain" src=/static/imgs/olimpic1.jpg alt="olimpic sailing" width="261" height="144" /></div>
+            <div class="col-md-3"><img class="contain" src=/static/imgs/olimpic2.jpg alt="olimpic sailing" width="217" height="165" /></div>
+            <div class="col-md-3"><img class="contain" src=/static/imgs/olimpic3.jpg alt="olimpic sailing" width="261" height="144" /></div>
+        </div>
+        <div class="row">
+            <h2>olimpic medal's Dataset Fields</h2>
+        </div>
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Medal</td>
+                        <td class="heb">סוג המדליה (זהב, כסף, ארד)</td>
+                    </tr>
+                    <tr>
+                        <td>Event</td>
+                        <td class="heb">סוג המקצה של התחרות</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td class="heb">מין הספורטאי </td>
+                    </tr>
+                    <tr>
+                        <td>Country</td>
+                        <td class="heb">המדינה של הספורטאי</td>
+                    </tr>
+                    <tr>
+                        <td>Athlete</td>
+                        <td class="heb">שם הספורטאי</td>
+                    </tr>
+                    <tr>
+                        <td>Discipline</td>
+                        <td class="heb">תת ענף</td>
+                    </tr>
+                    <tr>
+                        <td>Sport</td>
+                        <td class="heb">ענף</td>
+                    </tr>
+                    <tr>
 
-<div class="row">
-    <p> </p>
-</div>
-<div class="row">
-    <div class="col-md-3"><img class="contain" src=/static/imgs/olimpic1.jpg alt="olimpic sailing" width="261" height="144" /></div>
-    <div class="col-md-3"><img class="contain" src=/static/imgs/olimpic2.jpg alt="olimpic sailing" width="217" height="165" /></div>
-    <div class="col-md-3"><img class="contain" src=/static/imgs/olimpic3.jpg alt="olimpic sailing" width="261" height="144" /></div>
-</div>
-<div class="row">
-    <h2>olimpic medal's Dataset Fields</h2>
-</div>
-<div class="row">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Field</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Medal</td>
-                <td class="heb">סוג המדליה (זהב, כסף, ארד)</td>
-            </tr>
-            <tr>
-                <td>Event</td>
-                <td class="heb">סוג המקצה של התחרות</td>
-            </tr>
-            <tr>
-                <td>Gender</td>
-                <td class="heb">מין הספורטאי </td>
-            </tr>
-            <tr>
-                <td>Country</td>
-                <td class="heb">המדינה של הספורטאי</td>
-            </tr>
-            <tr>
-                <td>Athlete</td>
-                <td class="heb">שם הספורטאי</td>
-            </tr>
-            <tr>
-                <td>Discipline</td>
-                <td class="heb">תת ענף</td>
-            </tr>
-            <tr>
-                <td>Sport</td>
-                <td class="heb">ענף</td>
-            </tr>
-            <tr>
-                
-                <td>City</td>
-                <td class="heb">מקום התחרות</td>
-            </tr>
-            <tr>
-                <td>Year</td>
-                <td class="heb">שנת התחרות</td>
-            </tr>
+                        <td>City</td>
+                        <td class="heb">מקום התחרות</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td class="heb">שנת התחרות</td>
+                    </tr>
 
-        </tbody>
-    </table>
-</div>
+                </tbody>
+            </table>
+        </div>
 
 
-<div class="row">
-    <div class="col-md-5">
-        <form method="post">
-            {{ form1.csrf_token }}
-            <input class="btn btn-success" type="submit" name="action" value="Expand">
-        </form>
-    </div>
-    <div class="col-md-5">
-        <form method="post">
-            {{ form2.csrf_token }}
-            <input class="btn btn-danger" type="submit" name="action" value="Collapse">
-        </form>
-    </div>
-    <div class="row">
-        {{ raw_data_table | safe}}
-    </div>
-</div>
+        <div class="row">
+            <div class="col-md-5">
+                <form method="post">
+                    {{ form1.csrf_token }}
+                    <input class="btn btn-success" type="submit" name="action" value="Expand">
+                </form>
+            </div>
+            <div class="col-md-5">
+                <form method="post">
+                    {{ form2.csrf_token }}
+                    <input class="btn btn-danger" type="submit" name="action" value="Collapse">
+                </form>
+            </div>
+            <div class="row">
+                {{ raw_data_table | safe}}
+            </div>
+        </div>
 
-   
-    {% endblock %}
+</body>
+        {% endblock %}

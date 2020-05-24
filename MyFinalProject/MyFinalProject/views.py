@@ -145,7 +145,7 @@ def top_runners():
     print(s)
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\top-runners.csv'), encoding = "utf-8")
     raw_data_table = ''
-    #df = pd.read_csv("data/olimpic medal.csv", encoding = "ISO-8859-1")
+   
 
     if request.method == 'POST':
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
@@ -220,10 +220,17 @@ def olympic_medals():
     form1 = OlympicMedals()
     chart = '/static/imgs/1200px-Olympic_rings_without_rims.svg.png'
 
-   
+   #reads the data file.
+
     df = pd.read_csv(path.join(path.dirname(__file__), 'static/data/olimpic-medal.csv'))
+
+   #Creates a list of the countries that appear in the data.
+
     country_choices = list(set(df['Country']))
+   #Cleans the first line in the list.
+
     clean_country_choices = [x for x in country_choices if x == x]
+   
     m = list(zip(clean_country_choices , clean_country_choices))
     form1.country.choices = m 
 
