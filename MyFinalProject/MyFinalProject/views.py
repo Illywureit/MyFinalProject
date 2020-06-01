@@ -198,10 +198,13 @@ def Register():
 def Login():
     form = LoginFormStructure(request.form)
 
+    #if you press submit
+
     if (request.method == 'POST' and form.validate()):
+        #checks if the input matches the information in the system
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
-            flash('Login approved!')
-            #return redirect('<were to go if login is good!')
+          return redirect('olympic-medals')
+           #if it does, it approves the log-in and redirects the user to the 'Query' page.
         else:
             flash('Error in - Username and/or password')
    
