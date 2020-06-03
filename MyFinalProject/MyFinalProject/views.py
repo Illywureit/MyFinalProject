@@ -112,7 +112,7 @@ def olimpic_medals():
     form2 = CollapseForm()
     #reads the csv:
     s = path.join(path.dirname(__file__), 'static\\data\\olimpic-medal.csv')
-    print(s)
+    
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\olimpic-medal.csv'), encoding = "utf-8")
     raw_data_table = ''
      
