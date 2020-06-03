@@ -60,6 +60,7 @@ from MyFinalProject.models.LocalDatabaseRoutines import create_LocalDatabaseServ
 db_Functions = create_LocalDatabaseServiceRoutines() 
 app.config['SECRET_KEY'] = 'h'
 
+#this is the route for the Home page:
 @app.route('/')
 @app.route('/home')
 def home():
@@ -69,7 +70,7 @@ def home():
         title='Home Page',
         year=datetime.now().year,
     )
-
+#this is the route for the Contact page:
 @app.route('/contact')
 def contact():
     """Renders the contact page."""
@@ -79,7 +80,7 @@ def contact():
         year=datetime.now().year,
         message='Your contact page.'
     )
-
+#this is the route for the About page:
 @app.route('/about')
 def about():
     """Renders the about page."""
@@ -89,7 +90,7 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
-
+#this is the route for the Data page:
 @app.route('/data')
 def data():
     """Renders the about page."""
@@ -99,21 +100,23 @@ def data():
         year=datetime.now().year,
         message='My data page.'
     )
-
+#this is the route for the first data: 
 @app.route('/olimpic_medals' , methods = ['GET' , 'POST'])
 def olimpic_medals():
 
     print("medals")
 
     """Renders the about page."""
+    #creats the expand and collapse buttons:
     form1 = ExpandForm()
     form2 = CollapseForm()
+    #reads the csv:
     s = path.join(path.dirname(__file__), 'static\\data\\olimpic-medal.csv')
     print(s)
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\olimpic-medal.csv'), encoding = "utf-8")
     raw_data_table = ''
-    #df = pd.read_csv("data/olimpic medal.csv", encoding = "ISO-8859-1")
-
+     
+    # if the user click on the button:
     if request.method == 'POST':
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
             raw_data_table = df.to_html(classes = 'table table-hover')
@@ -121,7 +124,7 @@ def olimpic_medals():
             raw_data_table = ''
 
     
-
+ # returns the HTML page with the table and the parameters:
     return render_template(
         'medal.html',
         title='Olimpic medals',
@@ -132,21 +135,23 @@ def olimpic_medals():
         form1 = form1,
         form2 = form2
     )
-
+#this is the route for the second data: 
 @app.route('/top_runners' , methods = ['GET' , 'POST'])
 def top_runners():
 
     print("runners")
 
     """Renders the about page."""
+     #creats the expand and collapse buttons:
     form1 = ExpandForm()
     form2 = CollapseForm()
+    #reads the csv:
     s = path.join(path.dirname(__file__), 'static\\data\top-runners.csv')
     print(s)
     df = pd.read_csv(path.join(path.dirname(__file__), 'static\\data\\top-runners.csv'), encoding = "utf-8")
     raw_data_table = ''
    
-
+    # if the user click on the button:
     if request.method == 'POST':
         if request.form['action'] == 'Expand' and form1.validate_on_submit():
             raw_data_table = df.to_html(classes = 'table table-hover')
@@ -154,7 +159,7 @@ def top_runners():
             raw_data_table = ''
 
     
-
+# returns the HTML page with the table and the parameters:
     return render_template(
         'runners.html',
         title='Top runners',
@@ -165,11 +170,11 @@ def top_runners():
         form1 = form1,
         form2 = form2
     )
-
+#this is the route for the register page:
 @app.route('/register', methods=['GET', 'POST'])
 def Register():
     form = UserRegistrationFormStructure(request.form)
-
+    #if you click submit:
     if (request.method == 'POST' and form.validate()):
         if (not db_Functions.IsUserExist(form.username.data)):
             db_Functions.AddNewUser(form)
@@ -180,7 +185,7 @@ def Register():
         else:
             flash('Error: User with this Username already exist ! - '+ form.username.data)
             form = UserRegistrationFormStructure(request.form)
-
+        # returns the HTML page with the parameters:
     return render_template(
         'register.html', 
         form=form, 
@@ -230,23 +235,35 @@ def olympic_medals():
    #Creates a list of the countries that appear in the data.
 
     country_choices = list(set(df['Country']))
-   #Cleans the first line in the list.
+
+   #Cleans the first line in the list (wich is a NaN).
 
     clean_country_choices = [x for x in country_choices if x == x]
+
+    #creates list of tuples as the form requires.
    
     m = list(zip(clean_country_choices , clean_country_choices))
     form1.country.choices = m 
 
 
     if request.method == 'POST':
+        #pull the country from the form
         country = form1.country.data
+
+        #filter the data with the chosen country.
         df1 = df.loc[df['Country'] == country]
+        
+        #Creates seires that includes all types of discipline, sizing them and puts them in decending order.
         s = df1.groupby('Discipline').size().sort_values(ascending=False)
+
+
+        #-------- Creates the graph acording the seiries and makes it a pic
         fig = plt.figure()
         ax = fig.add_subplot(111)
         fig.subplots_adjust(bottom=0.4)
         s.plot(ax = ax , kind = 'bar', figsize = (24, 8) , fontsize = 22 , grid = True)
         chart = plot_to_img(fig)
+        #--------
 
     
     return render_template(
